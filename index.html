@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Nunito Sans' rel='stylesheet'>
+    <title>Document</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: "Nunito Sans" !important;
+            font-size: 18px;
+        }
+
+
+
+        .container {
+            width: 50vw;
+            height: 500px;
+            background-color: white;
+            margin: 0 auto;
+            margin-top: 15vh;
+            border-radius: 25px;
+            display: flex;
+            color: black;
+            border: solid;
+
+        }
+
+        .gridContainer {
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            flex: 1;
+            max-width: 50vw;
+        }
+
+        .innerContainer {
+            border-radius: 25px;
+            grid-column: 2 / span 3;
+            grid-row: 2 / span 4;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-content: center;
+            align-items: center;
+        }
+
+        .imageRow {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 2em;
+        }
+
+        .labLogo {
+            height: 50px;
+            background-color: white;
+            cursor: pointer;
+            border: 1px solid black;
+            border-radius: 10px;
+            box-shadow: -1px 1px 2px black;
+            padding: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .dateInput {
+            padding: .25em;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .zenButton {
+            background-color: #344a9a;
+            border-radius: 5px;
+            border-width: 0;
+            color: white;
+            text-decoration: none;
+            width: 25%;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 11px;
+            padding-bottom: 11px;
+            box-shadow: none;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .buttonContainer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 1.75em;
+        }
+
+        h3 {
+            margin: 0;
+        }
+
+        .logoContainer {
+            grid-row: 1 / 1;
+            grid-column: 1 / 1;
+            display: flex;
+            padding: 15px;
+        }
+
+        .zenLogo {
+            height: 40px;
+            object-fit: contain;
+            opacity: 0.75;
+        }
+
+        .startOver {
+            grid-row: 6;
+            grid-column: 1;
+            background-color: transparent;
+            color: black;
+            border: 0;
+            font-size: 18px;
+            padding: 15px;
+            padding-top: 40px;
+            font-weight: bolder;
+            cursor: pointer;
+            text-decoration: none;
+
+        }
+
+        .orderedList {
+            margin: 0;
+            padding: 0;
+            margin-top: .75em;
+        }
+
+        .resultsLogo {
+            height: 50px;
+            background-color: white;
+            cursor: pointer;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        #results {
+            padding: 0 !important;
+            justify-content: none !important;
+        }
+
+        #resultsLogo {
+            display: flex;
+            align-content: flex-end;
+        }
+
+        .shippingMethod {
+            font-weight: bolder;
+            font-size: .85em;
+            text-align: left;
+        }
+
+        .shippingEstimate {
+            font-size: .75em;
+        }
+
+        .resultsFirstRow {
+            display: flex;
+            align-items: flex-end;
+            border-bottom: solid 1px #344a9a;
+            width: 100%;
+            justify-content: space-between;
+            font-size: .85em;
+        }
+
+        .shippingResults {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .resultsMessage {
+            text-align: right;
+        }
+
+        .listItem {
+            padding: 0;
+            margin-top: .75em;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .ulRow {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            width: 100%;
+        }
+
+        .disclaimer {
+            font-size: 9px;
+            grid-column: 4/span 2;
+            grid-row: 6;
+            opacity: .7;
+            display: flex;
+            align-items: flex-end;
+            margin-right: 10px;
+        }
+
+        .header {
+            font-size: .65em;
+        }
+
+        @media only screen and (max-width:750px) {
+            .container {
+                width: 80vw;
+                height: 80vh;
+                margin: 0 auto;
+                margin-top: 10vh;
+                border-radius: 25px;
+                display: flex;
+                color: black;
+                font-size: smaller;
+            }
+
+            .gridContainer {
+                display: grid;
+                grid-template-rows: repeat(5, 1fr);
+                flex: 1;
+                max-width: 80vw;
+                padding: 5px;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .innerContainer {
+                grid-column: 1/span 2;
+                grid-row: 2 / span 3;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                padding: 10px;
+
+            }
+
+            .imageRow {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                justify-content: center;
+                gap: 1.5em;
+                margin-top: 0;
+
+            }
+
+            .disclaimer {
+                grid-column: 2;
+            }
+
+            .zenButton {
+                font-size: 11px;
+            }
+
+            .labLogo {
+                height: 40px;
+                background-color: white;
+                cursor: pointer;
+                border: 1px solid black;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .15);
+                padding: 5px;
+            }
+
+
+
+            h3 {
+                margin: 0;
+
+            }
+
+            .logoContainer {
+                grid-row: 1 / 1;
+                grid-column: 1/ span 2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .zenLogo {
+                height: 40px;
+                object-fit: contain;
+                opacity: .65;
+            }
+
+            .startOver {
+                grid-row: 6;
+                grid-column: 1;
+                width: 100%;
+                font-size: .75rem;
+                border-bottom-left-radius: 25px;
+                border-bottom-right-radius: 25px;
+                border-top-left-radius: 25px;
+                margin: 0;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .orderedList {
+                margin: 0;
+                text-align: right;
+                padding: 0;
+                font-size: 1em;
+            }
+
+            .shippingMethod {
+                font-weight: bolder;
+                margin-top: .5em;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="gridContainer">
+            <div class="logoContainer">
+                <img class="zenLogo"
+                    src="https://theme.zdassets.com/theme_assets/12052326/1e1b6ce8f68861fb975c6d67c19e9fdd078d64a1.png" />
+            </div>
+            <div class="innerContainer" id="labSelect">
+                <h3>Select your lab.</h3>
+                <div class="imageRow">
+                    <img onclick="labSelected('mpix')" id="mpix" class="labLogo"
+                        src="https://success.zenfolio.com/hc/article_attachments/7430821469075/05T3l00001VhcUlEAJ" />
+                    <img id="bay" class="labLogo" onclick="labSelected('bay')"
+                        src="data:image/png;base64,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" />
+                    <img id="oneVision" class="labLogo" onclick="labSelected('ovi')"
+                        src="https://success.zenfolio.com/hc/article_attachments/7430832995859/05T3l00001VhcrkEAB" />
+                    <img id="hcPro" class="labLogo" onclick="labSelected('hcPro')"
+                        src="https://success.zenfolio.com/hc/article_attachments/7430863984531/05T3l00001bunsAEAQ" />
+                    <img id="fuji" class="labLogo" onclick="fujiSelection()"
+                        src="https://success.zenfolio.com/hc/article_attachments/9565515338771/Untitled-1.jpg" />
+                </div>
+            </div>
+            <div class="innerContainer hidden" id="fujiFilm">
+                <h3>Please select your region.</h3>
+                <div class="buttonContainer">
+                    <button class="zenButton" onclick="labSelected('fujiFilmEurope')">Canada</button> <button
+                        class="zenButton" onclick="labSelected('fujiFilmEurope')">European Union</button>
+                </div>
+            </div>
+            <div class="innerContainer hidden" id="orderStatus">
+                <h3>
+                    Have you placed your order yet?
+                </h3>
+                <div class="buttonContainer">
+                    <button class="zenButton" onclick="ordered()">Yes</button>
+                    <button class="zenButton" onclick="notOrdered()">No</button>
+                </div>
+            </div>
+            <div id="dateSelectorOrdered" class="innerContainer hidden">
+                <h3>Select the date the order was placed.</h3>
+                <input id='dateOrdered' class="dateInput" type="date" />
+                <button class="zenButton" onclick="receivedBy()">Next</button>
+            </div>
+            <div id="dateSelectorNotOrdered" class="innerContainer hidden">
+                <h3>Select the date you want the order by.</h3>
+                <input id="dateRequested" class="dateInput" type="date" />
+                <button class="zenButton" onclick="orderBy()">Next</button>
+            </div>
+            <div id="productSelection" class="innerContainer hidden">
+                <div>
+                    <form>
+                        
+                    </form>
+                </div>
+            </div>
+            <div id="results" class="innerContainer hidden">
+                <div style="width:100%">
+                    <div class="resultsFirstRow">
+                        <div id="resultsLogo">
+                        </div>
+                        <span id="resultsMessage" class="resultsMessage"></span>
+                    </div>
+
+                    <ol id="shippingResults" class="shippingResults">
+                        <!-- <ol id="shippingList" class="orderedList">
+                
+                </ol>
+                <ol id="estimateList" class="orderedList">
+
+                </ol> -->
+                    </ol>
+                </div>
+            </div>
+
+            <div class="startOver" onclick="startOver()"><strong>←</strong> Start Over</div>
+            <div id="disclaimer" class="disclaimer">
+                <p>*All times are estimates based on production time and average shipping time. Due to the nature of
+                    shipping and production there may always be unexpected delays.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let lab = "";
+        let date = "";
+        const labs = {
+             mpix: {
+                shippingTime: {
+                    Economy_Shipping: 14,
+                    Standard_Shipping: 5,
+                    Expedited_Shipping: 1,
+                },
+                productionTime: {
+                    Prints: 2,
+                    Framed_Prints: 3,
+                    Metal_Prints: 3,
+                    Canvas_Prints: 4,
+                    Greeting_Cards: 3,
+                },
+                imageURL: "https://success.zenfolio.com/hc/article_attachments/7430821469075/05T3l00001VhcUlEAJ",
+            },
+            bay: {
+                shippingTime: {
+                    Economy_Shipping: 10,
+                    Standard_Shipping: 2,
+                    Overnight_Shipping: 1,
+                },
+                productionTime: {
+                    Prints: 5,
+                    Frames: 8,
+                    Metal_Prints: 3,
+                    Canvas_Prints: 6,
+                },
+                imageURL: "data:image/png;base64,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"
+            },
+            ovi: {
+                shippingTime: {
+                    Standard_Letter_Shipping: 5,
+                    Courier_Shipping: 1,
+                },
+                productionTime: {
+                    Prints: 3,
+                    Framed_Prints: 5,
+                    Calendars: 5,
+                    greetingCards: 6,
+                    photobooks: 7,
+                    acrylic_metal: 14,
+
+                },
+                imageURL: "https://success.zenfolio.com/hc/article_attachments/7430832995859/05T3l00001VhcrkEAB"
+            },
+            fujiFilmEurope: {
+                shippingTime: {
+                    Letter_Box_Shipping: 11,
+                    Parcel_Post: 15,
+                },
+                productionTime: {
+                    Prints: 3,
+                    Canvas_Prints: 5,
+                    Framed_Prints: 6,
+                },
+                imageURL: "https://success.zenfolio.com/hc/article_attachments/9565515338771/Untitled-1.jpg"
+            },
+            fujiFilmCanada: {
+                shippingTime: {
+                    Letter_Box_Shipping: 11,
+                    Parcel_Post: 15,
+                },
+                productionTime: {
+                    Prints: 3,
+                    Canvas_Prints: 5,
+                    Framed_Prints: 6,
+                },
+                imageURL: "https://success.zenfolio.com/hc/article_attachments/9565515338771/Untitled-1.jpg"
+            },
+            hcPro: {
+                shippingTime: {
+                    Large_Letter_Shipping: 10,
+                    Standard_Shipping: 3,
+                    Express_Shipping: 1,
+                },
+                productionTime: {
+                    Prints: 3,
+                    Framed_Prints:5,
+                    Canvas_Prints:6,
+                },
+                imageURL: "https://success.zenfolio.com/hc/article_attachments/7430863984531/05T3l00001bunsAEAQ"
+            }
+        }
+        let federalHolidays = [
+            "2022-01-01",
+            "2022-01-17",
+            "2022-02-21",
+            "2022-05-30",
+            "2022-06-19",
+            "2022-06-20",
+            "2022-07-04",
+            "2022-09-05",
+            "2022-10-10",
+            "2022-11-11",
+            "2022-11-24",
+            "2022-12-25",
+            "2022-12-26",
+            "2023-01-01",
+            "2023-01-02",
+            "2023-01-16",
+            "2023-02-20",
+            "2023-05-29",
+            "2023-06-19",
+            "2023-07-04",
+            "2023-09-04",
+            "2023-10-09",
+            "2023-11-10",
+            "2023-11-11",
+            "2023-11-23",
+            "2023-12-25"
+        ]
+
+        let daysOfWeek = [
+            "Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"
+        ]
+
+        function fujiSelection() {
+            let labSelection = document.getElementById('labSelect');
+            labSelection.classList.add('hidden')
+            let fujiSelect = document.getElementById('fujiFilm');
+            fujiSelect.classList.remove('hidden')
+        }
+
+        function labSelected(selectedLab) {
+            lab = labs[selectedLab];
+            let labSelection = document.getElementById('labSelect');
+            labSelection.classList.add('hidden')
+            let fujiSelect = document.getElementById('fujiFilm');
+            fujiSelect.classList.add('hidden')
+            let orderStatus = document.getElementById('orderStatus');
+            orderStatus.classList.remove('hidden');
+        }
+        function ordered() {
+            let orderStatus = document.getElementById('orderStatus');
+            orderStatus.classList.add('hidden');
+            let dateSelection = document.getElementById('dateSelectorOrdered')
+            dateSelection.classList.remove('hidden');
+        }
+        function notOrdered() {
+            let orderStatus = document.getElementById('orderStatus');
+            orderStatus.classList.add('hidden');
+            let dateSelection = document.getElementById('dateSelectorNotOrdered')
+            dateSelection.classList.remove('hidden');
+        }
+        function receivedBy() {
+            date = document.getElementById('dateOrdered').value
+            countDays(date, lab, 1)
+            let message = document.getElementById('resultsMessage')
+            let formattedDate = date.slice(5, date.length) + " -" + date.slice(0, 4)
+            message.innerHTML = "<strong> Order date:</strong> <br/> <small>" + (formattedDate.replaceAll("-", "/")) + "</small>"
+
+        }
+        function orderBy() {
+            date = document.getElementById('dateRequested').value
+            countDays(date, lab, -1)
+            let message = document.getElementById('resultsMessage')
+            let formattedDate = date.slice(5, date.length) + "-" + date.slice(0, 4)
+            message.innerHTML = "<strong>To recieve by: </strong>" + "<br/><small>" + (formattedDate.replaceAll("-", "/")) + "</small>"
+        }
+
+        function countDays(date, lab, factor) {
+
+
+            let shippingEstimates = []
+            Object.keys(lab.shippingTime).forEach(a => {
+                let timeNeeded = lab.productionTime.prints + lab.shippingTime[a]
+                let newDate = calculateDays(timeNeeded, date, factor)
+                shippingEstimates.push(a.replaceAll('_', " ") + ":  " + newDate)
+            })
+            let dateSelector = document.getElementById('dateSelectorOrdered')
+            dateSelector.classList.add('hidden')
+            dateSelector = document.getElementById('dateSelectorNotOrdered')
+            dateSelector.classList.add('hidden')
+            let disclaimer = document.getElementById('disclaimer')
+            disclaimer.classList.remove('hidden')
+            let shippingTimes = document.getElementById('results')
+            // let shippingList = document.getElementById('shippingList')
+            // let estimateList = document.getElementById('estimateList')
+            let list = document.getElementById('shippingResults')
+            let logoDiv = document.getElementById("resultsLogo")
+            let image = document.createElement("img")
+            image.src = lab.imageURL;
+            image.classList.add("resultsLogo")
+            logoDiv.appendChild(image)
+
+
+            let messaging = document.createElement('ul')
+            messaging.classList.add('ulRow')
+            let g = document.createElement('div')
+            let h = document.createElement('span')
+            h.classList.add("listItem")
+            h.classList.add("shippingEstimate")
+            h.classList.add('header')
+            if (factor < 0) {
+                h.innerHTML = "<strong>*Order by:</strong>"
+            }
+            else {
+                h.innerHTML = "<strong>*Receive by:</strong>"
+            }
+            messaging.appendChild(g)
+            messaging.appendChild(h)
+            list.appendChild(messaging)
+
+            shippingEstimates.map(a => {
+
+                let shippingListItem = document.createElement('span')
+                shippingListItem.classList.add('listItem')
+                let estimateListItem = document.createElement('span')
+                estimateListItem.classList.add('listItem')
+                let f = a.split(":");
+                shippingListItem.classList.add('shippingMethod')
+                estimateListItem.classList.add('shippingEstimate')
+                shippingListItem.innerHTML = f[0] + ":"
+                estimateListItem.innerHTML = f[1]
+                let fullitem = document.createElement('ul')
+                fullitem.classList.add('ulRow')
+                fullitem.appendChild(shippingListItem);
+                fullitem.appendChild(estimateListItem)
+                list.appendChild(fullitem)
+            })
+            shippingTimes.classList.remove('hidden')
+        }
+        function calculateDays(timeNeeded, startDate, factor) {
+            let x = new Date(startDate.replaceAll("-", "/"));
+            let totalDays = 0;
+            let businessDays = 0;
+            for (let i = 0; i <= timeNeeded + 1; i++) {
+                if (x.getDay() == 6 || x.getDay() == 0 || federalHolidays.includes(x.toISOString().slice(0, 10))) {
+
+                }
+                else {
+                    businessDays++;
+                }
+                x.setDate(x.getDate() + factor);
+                totalDays++;
+
+            }
+            while (x.getDay() == 6 || x.getDay() == 0 || federalHolidays.includes(x.toISOString().slice(0, 10))) {
+                x.setDate(x.getDate() + factor)
+            }
+            console.log(x)
+            return (daysOfWeek[x.getDay()] + " " + (x.getMonth() + 1) + "/" + x.getDate() + "/" + x.getFullYear());
+        }
+
+        function startOver() {
+            let e = document.getElementsByClassName('innerContainer')
+            for (let i = 0; i < e.length; i++) {
+                e[i].classList.add('hidden')
+            }
+
+            let firstPage = document.getElementById('labSelect')
+            let shippingList = document.getElementById('shippingResults')
+
+            shippingList.innerHTML = '';
+
+            firstPage.classList.remove('hidden')
+            lab = "";
+            date = "";
+            let logoDiv = document.getElementById("resultsLogo")
+            logoDiv.innerHTML = " ";
+
+        }
+
+    </script>
+</body>
+
+</html>
