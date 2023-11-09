@@ -416,9 +416,9 @@
         const labs = {
              mpix: {
                 shippingTime: {
-                    Economy_Shipping: 14,
-                    Standard_Shipping: 5,
-                    Expedited_Shipping: 1,
+                    Economy_Plus_Shipping: 14,
+                    Standard_Shipping: 7,
+                    Expedited_Shipping: 2,
                 },
                 productionTime: {
                     Prints: 2,
@@ -431,8 +431,8 @@
             },
             bay: {
                 shippingTime: {
-                    Economy_Shipping: 10,
-                    Standard_Shipping: 2,
+                    Standard_Shipping: 5,
+                    Two_Day_Shipping: 2,
                     Overnight_Shipping: 1,
                 },
                 productionTime: {
@@ -446,6 +446,7 @@
             ovi: {
                 shippingTime: {
                     Standard_Letter_Shipping: 5,
+                    Standard_Deliver: 5,
                     Courier_Shipping: 1,
                 },
                 productionTime: {
@@ -473,8 +474,8 @@
             },
             fujiFilmCanada: {
                 shippingTime: {
-                    Letter_Box_Shipping: 11,
-                    Parcel_Post: 15,
+                    Letter_Box_Shipping: 4,
+                    Expedited_Shipping: 8,
                 },
                 productionTime: {
                     Prints: 3,
@@ -486,8 +487,8 @@
             hcPro: {
                 shippingTime: {
                     Large_Letter_Shipping: 10,
-                    Standard_Shipping: 3,
-                    Express_Shipping: 1,
+                    Standard_Parcel_Shipping: 3,
+                    Express_Parcel_Shipping: 1,
                 },
                 productionTime: {
                     Prints: 3,
@@ -579,8 +580,9 @@
 
             let shippingEstimates = []
             Object.keys(lab.shippingTime).forEach(a => {
-                let timeNeeded = lab.productionTime.prints + lab.shippingTime[a]
+                let timeNeeded = lab.productionTime.Prints + lab.shippingTime[a]
                 let newDate = calculateDays(timeNeeded, date, factor)
+                console.log(newDate)
                 shippingEstimates.push(a.replaceAll('_', " ") + ":  " + newDate)
             })
             let dateSelector = document.getElementById('dateSelectorOrdered')
@@ -637,6 +639,7 @@
             shippingTimes.classList.remove('hidden')
         }
         function calculateDays(timeNeeded, startDate, factor) {
+            console.log(timeNeeded)
             let x = new Date(startDate.replaceAll("-", "/"));
             let totalDays = 0;
             let businessDays = 0;
